@@ -1,0 +1,23 @@
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# IDE and Editor Files (project-wide)
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment Files (root level)
+.env
+.env.local
+
+# Logs (root level)
+*.log
+
+# Temporary Files
+*.tmp
+*.bak
