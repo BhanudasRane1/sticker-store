@@ -20,7 +20,8 @@ public class ProductController {
     private final IProductService iProductService;
 
     @GetMapping
-    public List<ProductDto>  getProducts(){
+    public List<ProductDto>  getProducts() throws InterruptedException {
+        Thread.sleep(3000);
         List<ProductDto> productList = iProductService.getProducts();
         return productList;
     }
