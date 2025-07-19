@@ -4,8 +4,8 @@ import {
   Link,
   Form,
   useActionData,
-  useNavigate,
   useNavigation,
+  useNavigate,
 } from "react-router-dom";
 import apiClient from "../api/apiClient";
 import { toast } from "react-toastify";
@@ -23,7 +23,9 @@ export default function Login() {
     if (actionData?.success) {
       loginSuccess(actionData.jwtToken, actionData.user);
       sessionStorage.removeItem("redirectPath");
-      navigate(from);
+      setTimeout(() => {
+        navigate(from);
+      }, 100);
     } else if (actionData?.errors) {
       toast.error(actionData.errors.message || "Login failed.");
     }
@@ -81,7 +83,7 @@ export default function Login() {
               disabled={isSubmitting}
               className="w-full px-6 py-2 text-white dark:text-black text-xl rounded-md transition duration-200 bg-primary dark:bg-light hover:bg-dark dark:hover:bg-lighter"
             >
-              {isSubmitting ? "Authenticating" : "Login"}
+              {isSubmitting ? "Authenticating..." : "Login"}
             </button>
           </div>
         </Form>
@@ -112,7 +114,6 @@ export async function loginAction({ request }) {
   try {
     const response = await apiClient.post("/auth/login", loginData);
     const { message, user, jwtToken } = response.data;
-    console.log(jwtToken);
     return { success: true, message, user, jwtToken };
   } catch (error) {
     if (error.response?.status === 401) {

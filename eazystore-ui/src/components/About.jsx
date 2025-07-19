@@ -8,64 +8,66 @@ export default function About() {
   return (
     <div className="max-w-[1152px] min-h-[852px] mx-auto px-6 py-8 font-primary">
       <PageTitle title="About Us" />
-
       {/* About Us Content */}
       <p className="leading-6 mb-8 text-gray-600 dark:text-lighter">
         <span className="text-lg font-semibold text-primary dark:text-light">
-          Eazy Sticker
+          eazy sticker
         </span>{" "}
-        is a personal full-stack project where I built a complete
-        e-commerce-style platform for showcasing and selling stickers. I
-        developed the entire application, including the backend (Java + Spring
-        Boot) and frontend (React.js + Stencil JS), with features like dynamic
-        product listing, user interaction, and responsive design. While the
-        artwork was sourced externally, the focus of the project was to design
-        and build a scalable, real-world application from scratch to sharpen my
-        full-stack skills.
+        store is an initiative by{" "}
+        <span className="text-lg font-semibold text-primary dark:text-light">
+          Designs by eazybytes
+        </span>
+        , dedicated to offering you the most sought-after stickers and posters!
       </p>
 
-      {/* Our Story Section */}
-      <h2 className="text-2xl leading-[32px] font-bold text-primary dark:text-light mt-12 mb-6">
-        Our Story
+      {/* Why Choose Us Section */}
+      <h2 className="text-2xl leading-[32px] font-bold text-primary dark:text-light mb-6">
+        Why Choose Us?
       </h2>
-      <p className={pStyle}>
-        I’ve always been passionate about merging technology with creative
-        products. Working on eazy sticker allowed me to dive deeper into
-        building modern web applications, experiment with new tools, and create
-        a real platform that reflects my curiosity and technical skills. It’s
-        projects like these that keep me excited about software development and
-        continuous learning.
-      </p>
 
-      {/* Meet the Founder Section */}
-      <h2 className="text-2xl leading-[32px] font-bold text-primary dark:text-light mt-12 mb-6">
-        Meet the Founder
-      </h2>
-      <p className={pStyle}>
-        Hi, I’m Bhanudas Nivrutti Rane from Pune, India. I’m a software
-        developer with over 3 years of experience working with technologies like
-        Java, Spring Boot, Stencil JS, and cloud platforms like AWS and Azure.
-        Through projects like eazy sticker, I enjoy combining technical skills
-        with creativity to build products that are both functional and engaging.
-        I’m always exploring full-stack development, and I built this website
-        using Java for the backend and React.js and Stencil JS for the frontend
-        as part of my ongoing journey as a developer. Thanks for visiting and
-        being part of this adventure!
-      </p>
+      {/* Features */}
+      <div className="space-y-8">
+        {/* Feature: Premium Quality */}
+        <div>
+          <h3 className={h3Style}>Premium Quality</h3>
+          <p className={pStyle}>
+            We strive to provide every customer with the utmost satisfaction by
+            delivering high-quality vinyl stickers crafted with care and
+            precision.
+          </p>
+        </div>
 
-      {/* Optional: LinkedIn link */}
-      <p className={pStyle + " mt-4"}>
-        Connect with me on{" "}
-        <a
-          href="https://www.linkedin.com/in/bhanudasrane"
-          className="text-primary dark:text-light underline"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          LinkedIn
-        </a>
-        .
-      </p>
+        {/* Feature: Product Innovation */}
+        <div>
+          <h3 className={h3Style}>Product Innovation</h3>
+          <p className={pStyle}>
+            Our vinyl stickers feature a premium matte or glossy finish
+            lamination and are made with advanced adhesive technology. Designed
+            to withstand all weather conditions and resist scratches, our
+            stickers are gentle enough to preserve the surface of your beloved
+            gadgets.
+          </p>
+        </div>
+
+        {/* Feature: Excellent Service */}
+        <div>
+          <h3 className={h3Style}>Excellent Service</h3>
+          <p className={pStyle}>
+            Customer satisfaction is our top priority, and we’re committed to
+            delivering an exceptional shopping experience.
+          </p>
+        </div>
+
+        {/* Feature: Designs You’ll Love */}
+        <div>
+          <h3 className={h3Style}>Designs You’ll Love</h3>
+          <p className={pStyle}>
+            With over 1,000 designs, our collection ranges from relatable and
+            seriously funny to delightfully quirky. And we’re just getting
+            started—stay tuned for more exciting products and designs!
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
