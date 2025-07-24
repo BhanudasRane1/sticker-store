@@ -32,7 +32,7 @@ apiClient.interceptors.request.use(
           throw new Error("Failed to retrieve CSRF token from cookies");
         }
       }
-      //config.headers["X-XSRF-TOKEN"] = csrfToken;
+      config.headers["X-XSRF-TOKEN"] = csrfToken;
     }
 
     return config;
@@ -40,4 +40,17 @@ apiClient.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
+apiClient.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    if (error.response && error.response.status === 401) {
+      const jwtToken = localStorage.getItem("jwtToken");
+      if (jwtToken) {
+        localStorage.removeItem("jwtToken");
+        window.location.href = "/login";
+      }
+    }
+    return Promise.reject(error);
+  }
+);
 export default apiClient;
