@@ -35,11 +35,11 @@ public class ProfileRequestDto {
     private String state;
 
     @NotBlank(message = "Postal Code is required")
-    @Pattern(regexp = "^\\d{5}$", message = "Postal code must be exactly 5 digits")
+    @Pattern(regexp = "^\\d{6}$", message = "Postal code must be exactly 5 digits")
     private String postalCode;
 
     @NotBlank(message = "Country is required")
-    @Size(min = 3, max = 30, message = "The length of the country should be between 3 and 30 characters")
+    @Size(min = 2, max = 2, message = "The length of the country should be between 3 and 30 characters")
     private String country;
 
 }
