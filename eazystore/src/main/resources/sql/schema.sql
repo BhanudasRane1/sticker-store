@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS contacts
     email         VARCHAR(100)                          NOT NULL,
     mobile_number VARCHAR(15)                           NOT NULL,
     message       VARCHAR(500)                          NOT NULL,
+    status        VARCHAR(50)       NOT NULL,
     created_at    TIMESTAMP   DEFAULT CURRENT_TIMESTAMP NOT NULL,
     created_by    VARCHAR(20)                           NOT NULL,
     updated_at    TIMESTAMP   DEFAULT NULL,
@@ -58,18 +59,33 @@ CREATE TABLE IF NOT EXISTS address
 
 CREATE TABLE IF NOT EXISTS roles (
     role_id     BIGINT AUTO_INCREMENT PRIMARY KEY,
-    customer_id BIGINT NOT NULL,
     name        VARCHAR(50) NOT NULL,
     created_at TIMESTAMP   DEFAULT CURRENT_TIMESTAMP NOT NULL,
     created_by VARCHAR(20) NOT NULL,
     updated_at TIMESTAMP   DEFAULT NULL,
     updated_by VARCHAR(20) DEFAULT NULL,
-    FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE
+    UNIQUE KEY unique_name (name)
     );
 
-INSERT INTO roles (customer_id, name, created_at, created_by)
-VALUES (8, 'ROLE_ADMIN', CURRENT_TIMESTAMP, 'Anonymous user');
+CREATE TABLE IF NOT EXISTS customer_roles (
+   customer_id BIGINT NOT NULL,
+   role_id     BIGINT NOT NULL,
+   PRIMARY KEY (customer_id, role_id),
+   FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE,
+   FOREIGN KEY (role_id) REFERENCES roles(role_id) ON DELETE CASCADE
+);
 
+INSERT INTO roles (name, created_at, created_by)
+VALUES ('ROLE_USER', CURRENT_TIMESTAMP, 'DBA');
+
+INSERT INTO roles (name, created_at, created_by)
+VALUES ('ROLE_ADMIN', CURRENT_TIMESTAMP, 'DBA');
+
+INSERT INTO roles (name, created_at, created_by)
+VALUES ('ROLE_OPS_ENG', CURRENT_TIMESTAMP, 'DBA');
+
+INSERT INTO roles (name, created_at, created_by)
+VALUES ('ROLE_QA_ENG', CURRENT_TIMESTAMP, 'DBA');
 
 CREATE TABLE IF NOT EXISTS orders
 (
