@@ -1,10 +1,11 @@
 import axios from "axios";
+const API_URL =
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:8080/api/v1";
 
-const VITE_API_BASE_URL = "http://localhost:8080/api/v1";
 import Cookies from "js-cookie";
 
 const apiClient = axios.create({
-  baseURL: VITE_API_BASE_URL,
+  baseURL: API_URL,
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
@@ -24,7 +25,7 @@ apiClient.interceptors.request.use(
     if (!safeMethods.includes(config.method.toUpperCase())) {
       let csrfToken = Cookies.get("XSRF-TOKEN");
       if (!csrfToken) {
-        await axios.get(`${VITE_API_BASE_URL}/csrf-token`, {
+        await axios.get(`${API_URL}/csrf-token`, {
           withCredentials: true,
         });
         csrfToken = Cookies.get("XSRF-TOKEN");
