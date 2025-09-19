@@ -39,7 +39,7 @@ export default function About() {
 
       {/* Meet the Founder Section */}
       <h2 className="text-2xl leading-[32px] font-bold text-primary dark:text-light mt-12 mb-6">
-        Meet the Founder
+        Meet the Developer
       </h2>
       <p className={pStyle}>
         Hi, I’m Bhanudas Nivrutti Rane from Pune, India. I’m a software
